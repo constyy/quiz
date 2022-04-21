@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CEX - Website</title>
+        <link rel="stylesheet" href="./assets/styles.css">
+        <script src="https://kit.fontawesome.com/6dc388c5d9.js" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="sidenav">
+            <a href="/"><i class="fa fa-home"></i> Acasa</a>
+            <a href="pagina2.html"><i class="fa-brands fa-js"></i> JavaScript</a>
+            <a href="pagina3.html"><i class="fa-brands fa-css3"></i>CSS</a>
+            <a href="#"><i class="fa fa-paperclip"></i> Teste HTML</a>
+            <a href="#"><i class="fa-solid fa-note-sticky"></i> Teste JavaScript</a>
+          </div>
+          
+          <div class="content">
+            <form name="form" method="post">
+                <h1>HTML</h1>
+                <br/><br/>
+                <p><b>1. Ce înseamnă HTML?</b></p>
+                
+                <p><input type="radio" name="0" value="a" onclick="verifica(this.name, this.value)"/>Hyperlinks and Text Markup Language</p>
+                <p><input type="radio" name="0" value="b" onclick="verifica(this.name, this.value)"/>Hyper Text Markup Language </p>
+                <p><input type="radio" name="0" value="c" onclick="verifica(this.name, this.value)"/>Home Tool Markup Language</p>
+                
+                <p><b>2. Cine stabileşte standardele web?</b></p>
+                
+                <p><input type="radio" name="1" value="a" onclick="verifica(this.name, this.value)"/>Mozilla firefox</p>
+                <p><input type="radio" name="1" value="b" onclick="verifica(this.name, this.value)"/>Microsoft</p>
+                <p><input type="radio" name="1" value="c" onclick="verifica(this.name, this.value)"/>World Wide Web Consortium</p>
+                
+                <p><b>3. Nu este browser:</b></p>
+                
+                <p><input type="radio" name="2" value="a" onclick="verifica(this.name, this.value)"/>Internet Explorer</p>
+                <p><input type="radio" name="2" value="b" onclick="verifica(this.name, this.value)"/>Mozilla firefox</p>
+                <p><input type="radio" name="2" value="c" onclick="verifica(this.name, this.value)"/>Facebook</p>
+                
+                <p><b>4. Paginile web nu se pot edita în:</b></p>
+                
+                <p><input type="radio" name="3" value="a" onclick="verifica(this.name, this.value)"/>NotePad</p>
+                <p><input type="radio" name="3" value="b" onclick="verifica(this.name, this.value)"/>WorPad</p>
+                <p><input type="radio" name="3" value="c" onclick="verifica(this.name, this.value)"/>Apple Safari</p>
+                
+                <p><b>5. Alegeţi din lista de mai jos nume valide de fişiere de tip HTML</b></p>
+                
+                <p><input type="radio" name="4" value="a" onclick="verifica(this.name, this.value)"/>index.html</p>
+                <p><input type="radio" name="4" value="b" onclick="verifica(this.name, this.value)"/>index.htm</p>
+                <p><input type="radio" name="4" value="c" onclick="verifica(this.name, this.value)"/>index.htmy</p>
+                
+
+                <p><button class="button" onclick="eval()">Evalueaza</button></p>
+
+            </form>
+          </div>
+          <script type="text/javascript">
+            var rasp                   = ['b', 'c', 'c', 'c', 'a'];
+            var nota                   = 0;
+            var raspunsUtilizator      = new Array;
+
+            function verifica(intrebare, raspuns) { 
+              raspunsUtilizator[intrebare] = raspuns;
+              console.log(raspuns); 
+            }
+            
+            function refresh() {
+              raspunsUtilizator = new Array;
+              rasp = ['b', 'c', 'c', 'c', 'a'];
+              nota = 0;
+              location.reload();
+            }
+            
+            function eval() {
+              for(i=0;i<=4;i++) {
+                if(!raspunsUtilizator[i]) {
+                    alert("Nu ai raspuns la intrebarea #" + i);
+                    return refresh();
+                }
+                if(rasp[i] === raspunsUtilizator[i]) nota += 2;
+              }
+              if(nota === 0) return alert("Ai gresit toate intrebarile.");
+              if(nota === 0) return document.getElementById("quiz").innerHTML = `<br><br><br><h3>Din pacate ai ales raspunsul gresit pentru fiecare intrebare.</h3><br><button class="button" onclick="refresh()">Reincarca</button>`;
+              document.getElementById("quiz").innerHTML = "<br><br><br><h3>Felicitari! Ai finalizat testul, iar nota ta este: " + nota + `.</h3><br><button class="button" onclick="refresh()">Reincarca</button>`;
+              /*alert("Nota ta de astăzi este: " + nota);
+              refresh();*/
+            }
+            </script>
+    </body>
+</html>

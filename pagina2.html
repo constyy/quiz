@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CEX - Website</title>
+        <link rel="stylesheet" href="./assets/styles.css">
+        <script src="https://kit.fontawesome.com/6dc388c5d9.js" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="sidenav">
+            <a href="/"><i class="fa fa-home"></i> Acasa</a>
+            <a href="pagina1.html"><i class="fa fa-html5"></i> HTML</a>
+            <a href="pagina3.html"><i class="fa-brands fa-css3"></i>CSS</a>
+            <a href="#"><i class="fa fa-paperclip"></i> Teste HTML</a>
+            <a href="#"><i class="fa-solid fa-note-sticky"></i> Teste JavaScript</a>
+          </div>
+          
+          <div class="content">
+            <h1>JavaScript</h1>
+            <form name="form" id="quiz" method="post">
+                <br/><br/><br/>
+                <p><b>1. Care din urmatoarele variante trimite mesaje consolei?</b></p>
+                
+                <p><input type="radio" name="0" value="a" onclick="verifica(this.name, this.value)"/>alert('mesaj');</p>
+                <p><input type="radio" name="0" value="b" onclick="verifica(this.name, this.value)"/>console.log('mesaj');</p>
+                <p><input type="radio" name="0" value="c" onclick="verifica(this.name, this.value)"/>print('mesaj');</p>
+                
+                <p><b>2. Nu este corecta varianta:</b></p>
+                
+                <p><input type="radio" name="1" value="a" onclick="verifica(this.name, this.value)"/>console.log(1);</p>
+                <p><input type="radio" name="1" value="b" onclick="verifica(this.name, this.value)"/>print'('');</p>
+                <p><input type="radio" name="1" value="c" onclick="verifica(this.name, this.value)"/>var raspunsuri = 0;</p>
+                
+                <p><b>3. Fisierele javascript nu se pot edita în:</b></p>
+                
+                <p><input type="radio" name="2" value="a" onclick="verifica(this.name, this.value)"/>NotePad</p>
+                <p><input type="radio" name="2" value="b" onclick="verifica(this.name, this.value)"/>WordPad</p>
+                <p><input type="radio" name="2" value="c" onclick="verifica(this.name, this.value)"/>Google Chrome</p>
+                
+                <p><b>4. Alegeţi din lista de mai jos nume valide de fişiere de tip JS</b></p>
+                
+                <p><input type="radio" name="3" value="a" onclick="verifica(this.name, this.value)"/>index.javascript</p>
+                <p><input type="radio" name="3" value="b" onclick="verifica(this.name, this.value)"/>index.jsc</p>
+                <p><input type="radio" name="3" value="c" onclick="verifica(this.name, this.value)"/>index.js</p>
+                
+                <p><button class="button" onclick="eval()">Evalueaza</button></p>
+                
+            </form>
+          </div>
+          <script type="text/javascript">
+            var rasp                   = ['b', 'b', 'c', 'c'];
+            var nota                   = 2;
+            var raspunsUtilizator      = new Array;
+
+            function verifica(intrebare, raspuns) { 
+              raspunsUtilizator[intrebare] = raspuns;
+              console.log(raspuns); 
+            }
+            
+            function refresh() {
+              raspunsUtilizator = new Array;
+              rasp = ['b', 'c', 'c', 'c', 'a'];
+              nota = 2;
+              location.reload();
+            }
+            
+            function eval() {
+              for(i=0;i<=3;i++) {
+                if(!raspunsUtilizator[i]) {
+                    alert("Nu ai raspuns la intrebarea #" + i);
+                    return refresh();
+                }
+                if(rasp[i] === raspunsUtilizator[i]) nota += 2;
+              }
+              if(nota === 0) return document.getElementById("quiz").innerHTML = `<br><br><br><h3>Din pacate ai ales raspunsul gresit pentru fiecare intrebare.</h3><br><button class="button" onclick="refresh()">Reincarca</button>`;
+              document.getElementById("quiz").innerHTML = "<br><br><br><h3>Felicitari! Ai finalizat testul, iar nota ta este: " + nota + `.</h3><br><button class="button" onclick="refresh()">Reincarca</button>`;
+              /*alert("Nota ta de astăzi este: " + nota);
+              refresh();*/
+            }
+            </script>
+    </body>
+</html>
