@@ -1,6 +1,6 @@
-var rasp                   = ['b', 'c', 'c', 'c', 'a'];
-var nota                   = 0;
-var raspunsUtilizator      = new Array;
+let rasp                   = ['b', 'c', 'c', 'c', 'a'];
+let nota                   = 0;
+let raspunsUtilizator      = new Array;
 
 function verifica(intrebare, raspuns) { 
   raspunsUtilizator[intrebare] = raspuns;
@@ -22,7 +22,6 @@ function eval() {
     }
     if(rasp[i] === raspunsUtilizator[i]) nota += 2;
   }
-  if(nota === 0) return alert("Ai gresit toate intrebarile.");
   if(nota === 0) return document.getElementById("quiz").innerHTML = `<br><br><br><h3>Din pacate ai ales raspunsul gresit pentru fiecare intrebare.</h3><br><button class="button" onclick="refresh()">Reincarca</button>`;
   document.getElementById("quiz").innerHTML = "<br><br><br><h3>Felicitari! Ai finalizat testul, iar nota ta este: " + nota + `.</h3><br><button class="button" onclick="refresh()">Reincarca</button>`;
   /*alert("Nota ta de astăzi este: " + nota);

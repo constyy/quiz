@@ -1,6 +1,6 @@
-var rasp                   = ['b', 'b', 'c', 'c'];
-var nota                   = 2;
-var raspunsUtilizator      = new Array;
+let rasp                   = ['b', 'b', 'c', 'c'];
+let nota                   = 2;
+let raspunsUtilizator      = new Array;
 
 function verifica(intrebare, raspuns) { 
   raspunsUtilizator[intrebare] = raspuns;

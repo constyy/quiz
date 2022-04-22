@@ -8,11 +8,14 @@
     </head>
     <body>
         <div class="sidenav">
-            <a href="pagina1.html"><i class="fa fa-html5"></i> HTML</a>
-            <a href="pagina2.html"><i class="fa-brands fa-js"></i> JavaScript</a>
-            <a href="pagina3.html"><i class="fa-brands fa-css3"></i>CSS</a>
-            <a href="#"><i class="fa fa-paperclip"></i> Teste HTML</a>
-            <a href="#"><i class="fa-solid fa-note-sticky"></i> Teste JavaScript</a>
+            <input type="text" id="mySearch" onkeyup="search()" placeholder="Search.." title="Type in a category">
+            <ul id="myMenu">
+            <li><a href="pagina1.html"><i class="fa fa-html5"></i> HTML</a></li>
+            <li><a href="pagina2.html"><i class="fa-brands fa-js"></i> JavaScript</a></li>
+            <li><a href="pagina3.html"><i class="fa-brands fa-css3"></i>CSS</a></li>
+            <li><a href="#"><i class="fa fa-paperclip"></i> Teste HTML</a></li>
+            <li><a href="#"><i class="fa-solid fa-note-sticky"></i> Teste JavaScript</a></li>
+            </ul>
           </div>
           
           <div class="content" style="padding-top: 15em;">
@@ -20,5 +23,25 @@
             <h3>Acest website este destinat materialelor didactice.</h3>
             <h3>Selecteaza o rubrica din meniul din stanga pentru a accesa materialele puse la dispozitie.</h3>
           </div>
+          <script>
+            function search() {
+              // Declare variables
+              var input, filter, ul, li, a, i;
+              input = document.getElementById("mySearch");
+              filter = input.value.toUpperCase();
+              ul = document.getElementById("myMenu");
+              li = ul.getElementsByTagName("li");
+
+              // Loop through all list items, and hide those who don't match the search query
+              for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                  li[i].style.display = "";
+                } else {
+                  li[i].style.display = "none";
+                }
+              }
+            }
+          </script>
     </body>
 </html>
